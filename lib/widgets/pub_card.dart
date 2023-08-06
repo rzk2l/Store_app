@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:first_attempt/colors/colors.dart';
+import 'package:first_attempt/services/colors.dart';
+import 'package:first_attempt/services/pub.dart';
 
 class PubCard extends StatelessWidget {
-  const PubCard({
+  PubCard({
     super.key,
     required this.myColorsInstance,
   });
 
   final MyColors myColorsInstance;
+  final PubInfo pubInfo = PubInfo(
+      name: 'Nike. Just Do It',
+      slogan: "A HERITAGE OF SPEED",
+      logoPath: "nike_white.png");
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class PubCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Nike. Just Do It",
+                    pubInfo.name,
                     style: TextStyle(
                       color: myColorsInstance.bg,
                     ),
@@ -35,7 +40,7 @@ class PubCard extends StatelessWidget {
                   SizedBox(
                     width: 200,
                     child: Text(
-                      "A HERITAGE OF SPEED",
+                      pubInfo.slogan,
                       style: TextStyle(
                           color: myColorsInstance.bg,
                           fontSize: 25,
@@ -51,7 +56,7 @@ class PubCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: Image.asset(
-                  "nike_white.png",
+                  pubInfo.logoPath,
                 ),
               ),
             ),

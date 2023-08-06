@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:first_attempt/colors/colors.dart';
+import 'package:first_attempt/services/colors.dart';
 import 'package:first_attempt/widgets/pub_card.dart';
 
 class HomeScreen extends StatefulWidget {

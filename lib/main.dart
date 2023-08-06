@@ -1,6 +1,6 @@
 import 'package:first_attempt/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'colors/colors.dart';
+import 'services/colors.dart';
 import 'dart:math';
 
 void main() {
