@@ -52,7 +52,9 @@ class GetStarted extends StatelessWidget {
               ),
               SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/home');
+                },
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll(myColorsInstance.bg),
