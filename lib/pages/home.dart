@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
 import 'package:first_attempt/widgets/pub_card.dart';
+import 'package:first_attempt/widgets/logo_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               PubCard(myColorsInstance: myColorsInstance),
+              SizedBox(height: 20),
+              LogoList(),
             ],
           ),
         ),
