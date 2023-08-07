@@ -35,8 +35,9 @@ class GetStarted extends StatelessWidget {
               Image(
                   image: NetworkImage(
                 "https://static.thenounproject.com/png/2635332-200.png",
+                scale: 0.8,
               )),
-              SizedBox(height: 30),
+              SizedBox(height: 45),
               Text(
                 "Let's improve your style",
                 style: TextStyle(
@@ -44,13 +45,13 @@ class GetStarted extends StatelessWidget {
                     color: myColorsInstance.bg,
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 20),
               Text(
                 "Find cool shoes to support your daily activities",
                 style: TextStyle(
                     color: myColorsInstance.bg, fontWeight: FontWeight.w500),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 45),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/home');
