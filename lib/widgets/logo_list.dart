@@ -24,7 +24,7 @@ class LogoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 110,
       width: double.infinity,
       child: ListView.builder(
         shrinkWrap: true,
@@ -46,7 +46,7 @@ class LogoList extends StatelessWidget {
                   child: Text(
                     logoList[index].title,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 )
               ],

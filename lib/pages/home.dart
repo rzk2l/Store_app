@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
 import 'package:first_attempt/widgets/pub_card.dart';
 import 'package:first_attempt/widgets/logo_list.dart';
+import 'package:first_attempt/widgets/item_grid.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,6 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
               PubCard(myColorsInstance: myColorsInstance),
               SizedBox(height: 20),
               LogoList(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Selected for you",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              ItemsGrid(),
             ],
           ),
         ),
