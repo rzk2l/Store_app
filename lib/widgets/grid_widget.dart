@@ -75,8 +75,14 @@ class _GridWidgetState extends State<GridWidget> {
                   IconButton(
                       onPressed: () {
                         widget.items[index].isFav
-                            ? setState(() => widget.items[index].isFav = false)
-                            : setState(() => widget.items[index].isFav = true);
+                            ? setState(() {
+                                widget.items[index].isFav = false;
+                                favItems.remove(widget.items[index]);
+                              })
+                            : setState(() {
+                                widget.items[index].isFav = true;
+                                favItems.add(widget.items[index]);
+                              });
                       },
                       icon: (widget.items[index].isFav)
                           ? Icon(

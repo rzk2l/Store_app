@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
   final myColorsInstance = MyColors();
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,24 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: '')
+        ],
+        currentIndex: currentIndex,
+        elevation: 0,
+        backgroundColor: myColorsInstance.bg,
+        selectedItemColor: myColorsInstance.gsbg1,
+        unselectedItemColor: myColorsInstance.iconbg,
+        iconSize: 28,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
       ),
     );
   }
