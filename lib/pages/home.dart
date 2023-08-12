@@ -3,6 +3,7 @@ import 'package:first_attempt/services/colors.dart';
 import 'package:first_attempt/widgets/pub_card.dart';
 import 'package:first_attempt/widgets/logo_list.dart';
 import 'package:first_attempt/widgets/item_grid.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -58,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             currentIndex = index;
           });
+          if (currentIndex == 2) Get.toNamed('/favs');
         },
       ),
     );

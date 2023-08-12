@@ -1,23 +1,18 @@
+import 'package:first_attempt/services/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
 import 'package:first_attempt/services/items.dart';
+import 'package:get/get.dart';
 
-class GridWidget extends StatefulWidget {
-  const GridWidget({
+class GridWidget extends StatelessWidget {
+  GridWidget({
     super.key,
-    required this.items,
     required this.myColorsInstance,
   });
 
-  final List<GridItem> items;
   final MyColors myColorsInstance;
 
-  @override
-  State<GridWidget> createState() => _GridWidgetState();
-}
-
-class _GridWidgetState extends State<GridWidget> {
-  List<GridItem> favItems = [];
+  var controller = Get.put(FavoritesController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +20,7 @@ class _GridWidgetState extends State<GridWidget> {
       physics: ScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      itemCount: widget.items.length,
+      itemCount: controller.items.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,
@@ -43,9 +38,9 @@ class _GridWidgetState extends State<GridWidget> {
               Container(
                   width: double.infinity,
                   height: 150,
-                  color: widget.myColorsInstance.itembg,
+                  color: myColorsInstance.itembg,
                   child: Image.asset(
-                    widget.items[index].imageUrl,
+                    controller.items[index].imageUrl,
                     fit: BoxFit.fitWidth,
                   )),
               SizedBox(height: 5),
@@ -55,7 +50,7 @@ class _GridWidgetState extends State<GridWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.items[index].price,
+                        controller.items[index].price,
                         style: TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.w700,
@@ -63,7 +58,7 @@ class _GridWidgetState extends State<GridWidget> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        widget.items[index].name,
+                        controller.items[index].name,
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.w600),
                       )
@@ -72,27 +67,27 @@ class _GridWidgetState extends State<GridWidget> {
                   Expanded(
                     child: SizedBox(),
                   ),
-                  IconButton(
-                      onPressed: () {
-                        widget.items[index].isFav
-                            ? setState(() {
-                                widget.items[index].isFav = false;
-                                favItems.remove(widget.items[index]);
-                              })
-                            : setState(() {
-                                widget.items[index].isFav = true;
-                                favItems.add(widget.items[index]);
-                              });
-                      },
-                      icon: (widget.items[index].isFav)
-                          ? Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                            )
-                          : Icon(
-                              Icons.favorite_border,
-                              color: Colors.black,
-                            ))
+                  Obx(() => IconButton(
+                        onPressed: () {
+                          if (controller.items[index].isFav) {
+                            controller.items[index].isFav = false;
+                            controller.favItems.remove(controller.items[index]);
+                          } else {
+                            controller.items[index].isFav = true;
+                            controller.favItems.add(controller.items[index]);
+                          }
+                          controller.update();
+                        },
+                        icon: (controller.items[index].isFav)
+                            ? Icon(
+                                Icons.favorite,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                Icons.favorite_border,
+                                color: Colors.black,
+                              ),
+                      ))
                 ],
               )
             ],

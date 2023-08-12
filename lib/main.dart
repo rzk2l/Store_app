@@ -1,13 +1,23 @@
+import 'package:first_attempt/pages/favs.dart';
 import 'package:first_attempt/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'services/colors.dart';
 import 'dart:math';
 
 void main() {
-  runApp(MaterialApp(initialRoute: '/', routes: {
+  runApp(GetMaterialApp(
+    initialRoute: '/',
+    getPages: [
+      GetPage(name: '/', page: () => GetStarted()),
+      GetPage(name: '/home', page: () => HomeScreen()),
+      GetPage(name: '/favs', page: () => FavoritesScreen()),
+    ],
+    /* routes: {
     '/': (context) => GetStarted(),
     '/home': (context) => HomeScreen(),
-  }));
+  } */
+  ));
 }
 
 class GetStarted extends StatelessWidget {
@@ -54,7 +64,7 @@ class GetStarted extends StatelessWidget {
               SizedBox(height: 45),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Get.offNamed('/home');
                 },
                 style: ButtonStyle(
                     backgroundColor:
