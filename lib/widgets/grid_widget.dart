@@ -1,18 +1,17 @@
 import 'package:first_attempt/services/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
-import 'package:first_attempt/services/items.dart';
 import 'package:get/get.dart';
 
 class GridWidget extends StatelessWidget {
   GridWidget({
     super.key,
-    required this.myColorsInstance,
+    required this.rebuildParent,
   });
 
-  final MyColors myColorsInstance;
-
-  var controller = Get.put(FavoritesController());
+  final Function() rebuildParent;
+  final MyColors myColorsInstance = MyColors();
+  final FavoritesController controller = Get.put(FavoritesController());
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +68,7 @@ class GridWidget extends StatelessWidget {
                   ),
                   Obx(() => IconButton(
                         onPressed: () {
+                          rebuildParent();
                           if (controller.items[index].isFav) {
                             controller.items[index].isFav = false;
                             controller.favItems.remove(controller.items[index]);
@@ -76,7 +76,6 @@ class GridWidget extends StatelessWidget {
                             controller.items[index].isFav = true;
                             controller.favItems.add(controller.items[index]);
                           }
-                          controller.update();
                         },
                         icon: (controller.items[index].isFav)
                             ? Icon(

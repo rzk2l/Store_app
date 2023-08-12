@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class FavoritesController extends GetxController {
   RxList<GridItem> favItems = <GridItem>[].obs;
-  RxList<GridItem> items = [
+  RxList<GridItem> items = <GridItem>[
     GridItem(
         imageUrl: "items/nike2.png",
         logoUrl: 'nike_black.png',
