@@ -1,3 +1,5 @@
+import 'package:first_attempt/controllers/bottom_navigation_controller.dart';
+import 'package:first_attempt/pages/favs.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
 import 'package:first_attempt/widgets/pub_card.dart';
@@ -13,8 +15,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
+  BottomNavBarController bottomNavBarController =
+      Get.put(BottomNavBarController());
+
   final myColorsInstance = MyColors();
+
+  final List screens = [HomeScreen(), FavoritesScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: myColorsInstance.iconbg,
         iconSize: 28,
         onTap: (index) {
-          setState(() {
+          /* setState(() {
             currentIndex = index;
           });
-          if (currentIndex == 2) Get.toNamed('/favs');
+          if (currentIndex == 2) Get.toNamed('/favs'); */
         },
       ),
     );

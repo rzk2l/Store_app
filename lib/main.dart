@@ -1,5 +1,6 @@
 import 'package:first_attempt/pages/favs.dart';
 import 'package:first_attempt/pages/home.dart';
+import 'package:first_attempt/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'services/colors.dart';
@@ -7,12 +8,9 @@ import 'dart:math';
 
 void main() {
   runApp(GetMaterialApp(
-    initialRoute: '/',
-    getPages: [
-      GetPage(name: '/', page: () => GetStarted()),
-      GetPage(name: '/home', page: () => HomeScreen()),
-      GetPage(name: '/favs', page: () => FavoritesScreen()),
-    ],
+    debugShowCheckedModeBanner: false,
+    initialRoute: AppPages.getGetStarted(),
+    getPages: AppPages.routes,
     /* routes: {
     '/': (context) => GetStarted(),
     '/home': (context) => HomeScreen(),
