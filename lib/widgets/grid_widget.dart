@@ -1,4 +1,4 @@
-import 'package:first_attempt/services/controller.dart';
+import 'package:first_attempt/controllers/favorites_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
 import 'package:get/get.dart';
@@ -68,6 +68,7 @@ class GridWidget extends StatelessWidget {
                   ),
                   Obx(() => IconButton(
                         onPressed: () {
+                          // This is the function responsible for triggering a parent rebuild since it doesn't seem to be done automatically
                           rebuildParent();
                           if (controller.items[index].isFav) {
                             controller.items[index].isFav = false;

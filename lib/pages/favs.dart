@@ -1,4 +1,4 @@
-import 'package:first_attempt/services/controller.dart';
+import 'package:first_attempt/controllers/favorites_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -12,12 +12,12 @@ class ItemsGrid extends StatefulWidget {
 class _ItemsGridState extends State<ItemsGrid> {
   final MyColors myColorsInstance = MyColors();
   void rebuildParent() {
+    //Since this widget is not rebuilding when GridWidget changes the state, This function is used to trigger the rebuild of this class
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    print("rebuilt");
     return Expanded(
       child: GridWidget(
         rebuildParent: () => rebuildParent(),
