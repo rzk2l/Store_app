@@ -1,26 +1,98 @@
+import 'package:first_attempt/controllers/favorites_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
-import 'package:first_attempt/widgets/grid_widget.dart';
+import 'package:get/get.dart';
 
-class ItemsGrid extends StatefulWidget {
-  const ItemsGrid({super.key});
+class ItemsGrid extends StatelessWidget {
+  ItemsGrid({super.key});
 
-  @override
-  State<ItemsGrid> createState() => _ItemsGridState();
-}
-
-class _ItemsGridState extends State<ItemsGrid> {
   final MyColors myColorsInstance = MyColors();
-  void rebuildParent() {
-    //Since this widget is not rebuilding when GridWidget changes the state, This function is used to trigger the rebuild of this class
-    setState(() {});
-  }
+  final FavoritesController controller = Get.put(FavoritesController());
 
   @override
   Widget build(BuildContext context) {
+    print('rebuilt');
     return Expanded(
-      child: GridWidget(
-        rebuildParent: () => rebuildParent(),
+      child: GridView.builder(
+        physics: ScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: controller.items.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          mainAxisExtent: 215,
+        ),
+        itemBuilder: (context, index) {
+          return Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              children: [
+                Container(
+                    width: double.infinity,
+                    height: 150,
+                    color: myColorsInstance.itembg,
+                    child: Image.asset(
+                      controller.items[index].imageUrl,
+                      fit: BoxFit.fitWidth,
+                    )),
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          controller.items[index].price,
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          controller.items[index].name,
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: SizedBox(),
+                    ),
+                    Obx(() => IconButton(
+                          onPressed: () {
+                            // This is the function responsible for triggering a parent rebuild since it doesn't seem to be done automatically
+
+                            if (controller.items[index].isFav) {
+                              controller.items[index].isFav = false;
+                              controller.favItems
+                                  .remove(controller.items[index]);
+                            } else {
+                              controller.items[index].isFav = true;
+                              controller.favItems.add(controller.items[index]);
+                            }
+                          },
+                          icon: (controller.items[index].isFav)
+                              ? Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                )
+                              : Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.black,
+                                ),
+                        ))
+                  ],
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }
