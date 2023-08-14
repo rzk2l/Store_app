@@ -1,4 +1,5 @@
 import 'package:first_attempt/controllers/favorites_controller.dart';
+import 'package:first_attempt/services/items.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,6 @@ class ItemsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('rebuilt');
     return Expanded(
       child: GridView.builder(
         physics: ScrollPhysics(),
@@ -65,28 +65,28 @@ class ItemsGrid extends StatelessWidget {
                       child: SizedBox(),
                     ),
                     Obx(() => IconButton(
-                          onPressed: () {
-                            // This is the function responsible for triggering a parent rebuild since it doesn't seem to be done automatically
-
-                            if (controller.items[index].isFav) {
-                              controller.items[index].isFav = false;
-                              controller.favItems
-                                  .remove(controller.items[index]);
-                            } else {
-                              controller.items[index].isFav = true;
-                              controller.favItems.add(controller.items[index]);
-                            }
-                          },
-                          icon: (controller.items[index].isFav)
-                              ? Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                )
-                              : Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.black,
-                                ),
-                        ))
+                        onPressed: () {
+                          if (controller.items[index].isFav) {
+                            GridItem item = controller.items[index];
+                            item.isFav = false;
+                            controller.items[index] = item;
+                            controller.favItems.remove(controller.items[index]);
+                          } else {
+                            GridItem item = controller.items[index];
+                            item.isFav = true;
+                            controller.items[index] = item;
+                            controller.favItems.add(controller.items[index]);
+                          }
+                        },
+                        icon: (controller.items[index].isFav)
+                            ? Icon(
+                                Icons.favorite,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                Icons.favorite_border,
+                                color: Colors.black,
+                              ))),
                   ],
                 )
               ],

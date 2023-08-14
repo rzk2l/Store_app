@@ -1,3 +1,4 @@
+import 'package:first_attempt/controllers/binding.dart';
 import 'package:first_attempt/pages/favs.dart';
 import 'package:first_attempt/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'services/colors.dart';
 import 'dart:math';
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
   runApp(GetMaterialApp(
     initialRoute: '/',
     getPages: [
@@ -13,6 +15,7 @@ void main() {
       GetPage(name: '/home', page: () => HomeScreen()),
       GetPage(name: '/favs', page: () => FavoritesScreen()),
     ],
+    //initialBinding: FavoritesBindings(),
     /* routes: {
     '/': (context) => GetStarted(),
     '/home': (context) => HomeScreen(),
