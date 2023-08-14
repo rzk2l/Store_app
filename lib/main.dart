@@ -1,6 +1,6 @@
-import 'package:first_attempt/controllers/binding.dart';
+/* import 'package:first_attempt/controllers/binding.dart';
 import 'package:first_attempt/pages/favs.dart';
-import 'package:first_attempt/pages/home.dart';
+import 'package:first_attempt/pages/home.dart'; */
 import 'package:first_attempt/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,7 +64,7 @@ class GetStarted extends StatelessWidget {
               SizedBox(height: 45),
               ElevatedButton(
                 onPressed: () {
-                  Get.offNamed('/home');
+                  Get.offNamed('/nav');
                 },
                 style: ButtonStyle(
                     backgroundColor:

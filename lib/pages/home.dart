@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /* bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: ''),
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           if (currentIndex == 2) Get.toNamed('/favs');
         },
-      ),
+      ), */
     );
   }
 }
