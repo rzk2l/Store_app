@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: '')
         ],
-        currentIndex: currentIndex,
+        //currentIndex: currentIndex,
         elevation: 0,
         backgroundColor: myColorsInstance.bg,
         selectedItemColor: myColorsInstance.gsbg1,
