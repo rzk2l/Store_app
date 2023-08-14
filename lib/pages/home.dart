@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Get.put(BottomNavBarController());
 
   final myColorsInstance = MyColors();
+  int currentIndex = 0;
 
   final List screens = [HomeScreen(), FavoritesScreen()];
   @override
@@ -55,17 +56,17 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: '')
         ],
-        //currentIndex: currentIndex,
+        currentIndex: currentIndex,
         elevation: 0,
         backgroundColor: myColorsInstance.bg,
         selectedItemColor: myColorsInstance.gsbg1,
         unselectedItemColor: myColorsInstance.iconbg,
         iconSize: 28,
         onTap: (index) {
-          /* setState(() {
+          setState(() {
             currentIndex = index;
           });
-          if (currentIndex == 2) Get.toNamed('/favs'); */
+          if (currentIndex == 2) Get.toNamed('/favs');
         },
       ),
     );
