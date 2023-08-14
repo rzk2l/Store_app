@@ -1,3 +1,4 @@
+import 'package:first_attempt/controllers/binding.dart';
 import 'package:first_attempt/pages/favs.dart';
 import 'package:first_attempt/pages/home.dart';
 import 'package:first_attempt/routes/routes.dart';
@@ -7,6 +8,7 @@ import 'services/colors.dart';
 import 'dart:math';
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: AppPages.getGetStarted(),
