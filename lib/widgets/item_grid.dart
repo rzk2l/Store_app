@@ -1,4 +1,4 @@
-import 'package:first_attempt/controllers/favorites_controller.dart';
+import 'package:first_attempt/controllers/controller.dart';
 import 'package:first_attempt/services/items.dart';
 import 'package:flutter/material.dart';
 import 'package:first_attempt/services/colors.dart';
@@ -8,7 +8,7 @@ class ItemsGrid extends StatelessWidget {
   ItemsGrid({super.key});
 
   final MyColors myColorsInstance = MyColors();
-  final FavoritesController controller = Get.put(FavoritesController());
+  final Controller controller = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {

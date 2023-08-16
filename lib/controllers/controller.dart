@@ -1,7 +1,7 @@
 import 'package:first_attempt/services/items.dart';
 import 'package:get/get.dart';
 
-class FavoritesController extends GetxController {
+class Controller extends GetxController {
   RxList<GridItem> favItems = <GridItem>[].obs;
   RxList<GridItem> items = <GridItem>[
     GridItem(
@@ -45,4 +45,25 @@ class FavoritesController extends GetxController {
         price: "\$89.99",
         name: "New Balance 02"),
   ].obs;
+
+  RxList<GridItem> foundItems = <GridItem>[].obs;
+
+  void init() {
+    foundItems = items;
+  }
+
+  void filterList(String name) {
+    List<GridItem> results = [];
+    if (name.isEmpty) {
+      results = items;
+    } else {
+      results = items
+          .where((element) => element.name
+              .toString()
+              .toLowerCase()
+              .contains(name.toLowerCase()))
+          .toList();
+    }
+    foundItems.value = results;
+  }
 }
