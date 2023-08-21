@@ -31,103 +31,107 @@ class FavoritesScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Obx(() => (controller.favItems.isNotEmpty)
-                    ? GridView.builder(
-                        physics: ScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: controller.favItems.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          mainAxisExtent: 215,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                    width: double.infinity,
-                                    height: 150,
-                                    color: myColorsInstance.itembg,
-                                    child: Image.asset(
-                                      controller.favItems[index].imageUrl,
-                                      fit: BoxFit.fitWidth,
-                                    )),
-                                SizedBox(height: 5),
-                                Row(
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          controller.favItems[index].price,
-                                          style: TextStyle(
-                                            fontSize: 19,
-                                            fontWeight: FontWeight.w700,
+                    ? Expanded(
+                        child: GridView.builder(
+                          physics: ScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: controller.favItems.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            mainAxisExtent: 215,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Container(
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                      width: double.infinity,
+                                      height: 150,
+                                      color: myColorsInstance.itembg,
+                                      child: Image.asset(
+                                        controller.favItems[index].imageUrl,
+                                        fit: BoxFit.fitWidth,
+                                      )),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            controller.favItems[index].price,
+                                            style: TextStyle(
+                                              fontSize: 19,
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          controller.favItems[index].name,
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w600),
-                                        )
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: SizedBox(),
-                                    ),
-                                    Obx(() => IconButton(
-                                        onPressed: () {
-                                          if (controller
-                                              .favItems[index].isFav) {
-                                            GridItem favItem =
-                                                controller.favItems[index];
-                                            favItem.isFav = false;
-                                            controller.favItems[index] =
-                                                favItem;
-                                            controller.favItems.remove(
-                                                controller.favItems[index]);
-                                            GridItem item =
-                                                controller.items[index];
-                                            item.isFav = false;
-                                            controller.items[index] = item;
-                                          } else {
-                                            GridItem favItem =
-                                                controller.favItems[index];
-                                            favItem.isFav = true;
-                                            controller.favItems[index] =
-                                                favItem;
-                                            controller.favItems.add(
-                                                controller.favItems[index]);
-                                            GridItem item =
-                                                controller.items[index];
-                                            item.isFav = true;
-                                            controller.items[index] = item;
-                                          }
-                                        },
-                                        icon: (controller.favItems[index].isFav)
-                                            ? Icon(
-                                                Icons.favorite,
-                                                color: Colors.red,
-                                              )
-                                            : Icon(
-                                                Icons.favorite,
-                                                color: Colors.red,
-                                              ))),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
+                                          SizedBox(height: 5),
+                                          Text(
+                                            controller.favItems[index].name,
+                                            style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w600),
+                                          )
+                                        ],
+                                      ),
+                                      Expanded(
+                                        child: SizedBox(),
+                                      ),
+                                      Obx(() => IconButton(
+                                          onPressed: () {
+                                            if (controller
+                                                .favItems[index].isFav) {
+                                              GridItem favItem =
+                                                  controller.favItems[index];
+                                              favItem.isFav = false;
+                                              controller.favItems[index] =
+                                                  favItem;
+                                              controller.favItems.remove(
+                                                  controller.favItems[index]);
+                                              GridItem item =
+                                                  controller.items[index];
+                                              item.isFav = false;
+                                              controller.items[index] = item;
+                                            } else {
+                                              GridItem favItem =
+                                                  controller.favItems[index];
+                                              favItem.isFav = true;
+                                              controller.favItems[index] =
+                                                  favItem;
+                                              controller.favItems.add(
+                                                  controller.favItems[index]);
+                                              GridItem item =
+                                                  controller.items[index];
+                                              item.isFav = true;
+                                              controller.items[index] = item;
+                                            }
+                                          },
+                                          icon:
+                                              (controller.favItems[index].isFav)
+                                                  ? Icon(
+                                                      Icons.favorite,
+                                                      color: Colors.red,
+                                                    )
+                                                  : Icon(
+                                                      Icons.favorite,
+                                                      color: Colors.red,
+                                                    ))),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       )
                     : Expanded(
                         child: Center(
