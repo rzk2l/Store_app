@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class SearchBarScreen extends StatelessWidget {
   SearchBarScreen({super.key});
   final MyColors myColorsInstance = MyColors();
-  final Controller controller = Get.put(Controller());
+  final Controller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -93,9 +93,11 @@ class SearchBarScreen extends StatelessWidget {
                                             foundItem;
                                         controller.favItems.remove(
                                             controller.foundItems[index]);
-                                        GridItem item = controller.items[index];
+                                        int id = controller.items.indexOf(
+                                            controller.foundItems[index]);
+                                        GridItem item = controller.items[id];
                                         item.isFav = false;
-                                        controller.items[index] = item;
+                                        controller.items[id] = item;
                                       } else {
                                         GridItem foundItem =
                                             controller.foundItems[index];
@@ -104,9 +106,11 @@ class SearchBarScreen extends StatelessWidget {
                                             foundItem;
                                         controller.favItems
                                             .add(controller.foundItems[index]);
-                                        GridItem item = controller.items[index];
+                                        int id = controller.items.indexOf(
+                                            controller.foundItems[index]);
+                                        GridItem item = controller.items[id];
                                         item.isFav = true;
-                                        controller.items[index] = item;
+                                        controller.items[id] = item;
                                       }
                                     },
                                     icon: (controller.foundItems[index].isFav)

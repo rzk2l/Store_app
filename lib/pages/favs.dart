@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class FavoritesScreen extends StatelessWidget {
   FavoritesScreen({super.key});
-  final Controller controller = Get.put(Controller());
+  final Controller controller = Get.find();
   final MyColors myColorsInstance = MyColors();
 
   @override

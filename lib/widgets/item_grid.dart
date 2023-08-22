@@ -8,7 +8,7 @@ class ItemsGrid extends StatelessWidget {
   ItemsGrid({super.key});
 
   final MyColors myColorsInstance = MyColors();
-  final Controller controller = Get.put(Controller());
+  final Controller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

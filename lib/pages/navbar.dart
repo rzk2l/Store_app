@@ -9,8 +9,7 @@ import 'package:get/get.dart';
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});
 
-  final BottomNavBarController bottomNavBarController =
-      Get.put(BottomNavBarController());
+  final BottomNavBarController bottomNavBarController = Get.find();
   final MyColors myColorsInstance = MyColors();
 
   final List<Widget> screens = [

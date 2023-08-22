@@ -1,6 +1,4 @@
-/* import 'package:first_attempt/controllers/binding.dart';
-import 'package:first_attempt/pages/favs.dart';
-import 'package:first_attempt/pages/home.dart'; */
+import 'package:first_attempt/controllers/binding.dart';
 import 'package:first_attempt/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,10 +11,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: AppPages.getGetStarted(),
     getPages: AppPages.routes,
-    /* routes: {
-    '/': (context) => GetStarted(),
-    '/home': (context) => HomeScreen(),
-  } */
+    initialBinding: MyBindings(),
   ));
 }
 

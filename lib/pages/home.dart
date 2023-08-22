@@ -14,8 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  BottomNavBarController bottomNavBarController =
-      Get.put(BottomNavBarController());
+  BottomNavBarController bottomNavBarController = Get.find();
 
   final myColorsInstance = MyColors();
 

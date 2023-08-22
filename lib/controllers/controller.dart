@@ -48,19 +48,19 @@ class Controller extends GetxController {
 
   RxList<GridItem> foundItems = <GridItem>[].obs;
 
-  @override
+  //@override
   void init() {
-    super.onInit();
+    //super.onInit();
     foundItems.value = items;
   }
 
-  @override
+  /* @override
   void onReady() {
     super.onReady();
-  }
+  } */
 
-  @override
-  void onClose() {}
+  /* @override
+  void onClose() {} */
 
   void filterList(String name) {
     List<GridItem> results = [];
